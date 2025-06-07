@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: crypto-insight
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=15m
+
+api:
+  cryptocompare:
+    key: ${CRYPTOCOMPARE_API_KEY:}
+    base-url: https://min-api.cryptocompare.com/data
+  coingecko:
+    base-url: https://api.coingecko.com/api/v3
+  mobula:
+    key: ${MOBULA_API_KEY:}
+    base-url: https://api.mobula.io/api/1
+
+ai:
+  gemini:
+    project-id: ${GEMINI_PROJECT_ID:}
+    location: us-central1
+    model-name: gemini-pro
+
+server:
+  port: 8080

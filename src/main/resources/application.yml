@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: crypto-insight
+  aop:
+    auto: true
+    proxy-target-class: true
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=15m
+
+api:
+  cryptocompare:
+    key: ${CRYPTOCOMPARE_API_KEY:demo-key}
+    base-url: https://min-api.cryptocompare.com/data
+  coingecko:
+    base-url: https://api.coingecko.com/api/v3
+  coinpaprika:
+    base-url: https://api.coinpaprika.com/v1
+  mobula:
+    key: ${MOBULA_API_KEY:demo-key}
+    base-url: https://api.mobula.io/api/1
+
+ai:
+  gemini:
+    project-id: ${GEMINI_PROJECT_ID:demo-project}
+    location: ${GEMINI_LOCATION:us-central1}
+    model-name: ${GEMINI_MODEL:gemini-pro}
