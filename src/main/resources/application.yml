@@ -1,3 +1,63 @@
+
+
+
+
+
+
+
+
+
+
+
+
+# spring:
+#   application:
+#     name: crypto-insight
+#   aop:
+#     auto: true
+#     proxy-target-class: true
+#   cache:
+#     type: caffeine
+#     caffeine:
+#       spec: maximumSize=500,expireAfterWrite=15m
+#   ai:
+#     vertex:
+#       ai:
+#         gemini:
+#           project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
+#           location: ${GEMINI_LOCATION:us-central1}
+#           model: ${GEMINI_MODEL:gemini-1.5-flash}
+
+# # Add this section back to match AIService expectations
+# ai:
+#   gemini:
+#     project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
+#     location: ${GEMINI_LOCATION:us-central1}
+#     model-name: ${GEMINI_MODEL:gemini-1.5-flash}
+
+# api:
+#   cryptocompare:
+#     key: ${CRYPTOCOMPARE_API_KEY:demo-key}
+#     base-url: https://min-api.cryptocompare.com/data
+#   coingecko:
+#     base-url: https://api.coingecko.com/api/v3
+#   coinpaprika:
+#     base-url: https://api.coinpaprika.com/v1
+#   mobula:
+#     key: ${MOBULA_API_KEY:demo-key}
+#     base-url: https://api.mobula.io/api/1
+
+
+
+
+
+
+
+
+
+
+
+
 spring:
   application:
     name: crypto-insight
@@ -15,6 +75,15 @@ spring:
           project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
           location: ${GEMINI_LOCATION:us-central1}
           model: ${GEMINI_MODEL:gemini-1.5-flash}
+          api-key: ${GEMINI_API_KEY:AIzaSyBJJ8aepNb70SeVx6BGFMfT2-gm8ceKI9A}  # Add this
+
+# This section is what your AIService is actually reading from
+ai:
+  gemini:
+    project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
+    location: ${GEMINI_LOCATION:us-central1}
+    model-name: ${GEMINI_MODEL:gemini-1.5-flash}
+    api-key: ${GEMINI_API_KEY:AIzaSyBJJ8aepNb70SeVx6BGFMfT2-gm8ceKI9A}  # Add this - IMPORTANT!
 
 api:
   cryptocompare:
@@ -27,10 +96,3 @@ api:
   mobula:
     key: ${MOBULA_API_KEY:demo-key}
     base-url: https://api.mobula.io/api/1
-
-# Remove the old ai configuration section as it's now under spring.ai
-# ai:
-#   gemini:
-#     project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
-#     location: ${GEMINI_LOCATION:us-central1}
-#     model-name: ${GEMINI_MODEL:gemini-1.5-flash}
