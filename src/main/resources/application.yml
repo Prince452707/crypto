@@ -8,6 +8,13 @@ spring:
     type: caffeine
     caffeine:
       spec: maximumSize=500,expireAfterWrite=15m
+  ai:
+    vertex:
+      ai:
+        gemini:
+          project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
+          location: ${GEMINI_LOCATION:us-central1}
+          model: ${GEMINI_MODEL:gemini-1.5-flash}
 
 api:
   cryptocompare:
@@ -21,8 +28,9 @@ api:
     key: ${MOBULA_API_KEY:demo-key}
     base-url: https://api.mobula.io/api/1
 
-ai:
-  gemini:
-    project-id: ${GEMINI_PROJECT_ID:demo-project}
-    location: ${GEMINI_LOCATION:us-central1}
-    model-name: ${GEMINI_MODEL:gemini-pro}
+# Remove the old ai configuration section as it's now under spring.ai
+# ai:
+#   gemini:
+#     project-id: ${GEMINI_PROJECT_ID:cryptoduse-e7d87}
+#     location: ${GEMINI_LOCATION:us-central1}
+#     model-name: ${GEMINI_MODEL:gemini-1.5-flash}

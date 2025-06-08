@@ -1,29 +1,29 @@
 package crypto.insight.crypto.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ApiResponse<T> {
-    private final boolean success;
-    private final String message;
-    private final T data;
-    private final LocalDateTime timestamp;
-    private final String error;
-
-    private ApiResponse(boolean success, String message, T data, String error) {
-        this.success = success;
-        this.message = message;
-        this.data = data;
-        this.error = error;
-        this.timestamp = LocalDateTime.now();
-    }
-
+    private boolean success;
+    private String message;
+    private T data;
+    
     public static <T> ApiResponse<T> success(T data, String message) {
-        return new ApiResponse<>(true, message, data, null);
+        ApiResponse<T> response = new ApiResponse<>();
+        response.setSuccess(true);
+        response.setMessage(message);
+        response.setData(data);
+        return response;
     }
-
-    public static <T> ApiResponse<T> error(String error) {
-        return new ApiResponse<>(false, "Error", null, error);
+    
+    public static <T> ApiResponse<T> error(String message) {
+        ApiResponse<T> response = new ApiResponse<>();
+        response.setSuccess(false);
+        response.setMessage(message);
+        return response;
     }
 }
